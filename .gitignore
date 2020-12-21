@@ -1,0 +1,8 @@
+*#*#
+*~
+*.pyc
+__pycache__
+aws_cdk_test_synth.egg-info
+build
+dist
+.env
