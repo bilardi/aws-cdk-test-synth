@@ -1,0 +1,8 @@
+Resources:
+  test:
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: your-bucket-name
+    Type: AWS::S3::Bucket
+    UpdateReplacePolicy: Retain
+
