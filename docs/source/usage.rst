@@ -25,6 +25,28 @@ There is the method named **synth** with the initialization of **YourClass**
     def synth(self, app):
         YourClass(app, id="name-of-your-stack")
 
+If you have to manage more **YourClass**, you can use the method **synthesizes**
+
+.. code-block:: bash
+
+    def your_synth(self, app):
+        YourClass(app, id="name-of-your-stack")
+
+    def test_your_synth(self):
+        self.synthesizes('your_synth')
+
+It you have to manage more templates, you can use the method **load_template**
+
+.. code-block:: bash
+
+    def your_synth(self, app):
+        YourClass(app, id=self.id)
+
+    def test_your_synth(self):
+        self.id = "name-of-your-synth"
+        self.load_template('tests/yoursynth.yaml')
+        self.synthesizes('your_synth')
+
 Example
 #######
 

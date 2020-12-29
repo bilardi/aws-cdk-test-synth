@@ -23,6 +23,15 @@ class TestSynth(unittest.TestCase):
             Args:
                 filename (string): relative path and name of yaml file
         """
+        self.load_template(filename)
+        unittest.TestCase.__init__(self, *args, **kwargs)
+
+    def load_template(self, filename):
+        """
+        loads the dictionary of Cloudformation properties for comparison
+            Args:
+                filename (string): relative path and name of yaml file
+        """
         try:
             with open(filename) as yaml_file:
                 self.template = self.load(yaml_file)
@@ -31,7 +40,6 @@ class TestSynth(unittest.TestCase):
                 pass
             else:
                 raise TypeError(exception)
-        unittest.TestCase.__init__(self, *args, **kwargs)
 
     def synth(self, app):
         """
@@ -49,18 +57,29 @@ class TestSynth(unittest.TestCase):
             Returns:
                 Nothing if they are the same or the new template synthesized in yaml format
         """
-        app = core.App()
-        self.synth(app)
-        template = self.get_template(app, "test")
-        if not template == self.template:
-            print(self.dict_to_yaml(template))
-        self.assertEqual(template, self.template)
+        self.synthesizes('synth')
 
     # mandatory
     def runTest(self):
         assert(True == True)
 
     # helpers
+    def synthesizes(self, method_name):
+        """
+        checks the cloud assembly synthesized is the same with that saved
+            Args:
+                method_name (string): name of method with the stack to assemble
+            Returns:
+                Nothing if they are the same or the new template synthesized in yaml format
+        """
+        app = core.App()
+        method = getattr(self, method_name)
+        method(app)
+        template = self.get_template(app, "test")
+        if not template == self.template:
+            print(self.dict_to_yaml(template))
+        self.assertEqual(template, self.template)
+
     def load(self, filename):
         """
         loads yaml file

@@ -1,4 +1,3 @@
-#import tests.helper as hlp
 from tests.s3_stack import S3
 from aws_cdk_test_synth.test_synth import TestSynth
 
