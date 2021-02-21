@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2021-02-21
+
+### Fixed
+- removal of a print
+
 ## [0.0.3] - 2021-02-21
 
 ### Added
@@ -25,7 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - the init files of package and tests
 - the documentation by sphinx
 
-[Unreleased]: https://github.com/bilardi/aws-cdk-test-synth/compare/v0.0.3...HEAD
+[Unreleased]: https://github.com/bilardi/aws-cdk-test-synth/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/bilardi/aws-cdk-test-synth/releases/tag/v0.0.4
 [0.0.3]: https://github.com/bilardi/aws-cdk-test-synth/releases/tag/v0.0.3
 [0.0.2]: https://github.com/bilardi/aws-cdk-test-synth/releases/tag/v0.0.2
 [0.0.1]: https://github.com/bilardi/aws-cdk-test-synth/releases/tag/v0.0.1

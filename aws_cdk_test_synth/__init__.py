@@ -20,5 +20,5 @@ synthesizes the new template and compares between them.
 # license MIT
 # support https://github.com/bilardi/aws-cdk-test-synth/issues
 """
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 __author__ = 'Alessandra Bilardi'

@@ -170,5 +170,4 @@ class TestSynth(unittest.TestCase):
                 dictionary of Cloudformation properties
         """        
         template = app.synth().get_stack_by_name(stack_name).template
-        print(template)
         return self.remove_identifiers(template)
