@@ -100,6 +100,17 @@ class TestSynth(unittest.TestCase):
         """
         return yaml.dump(template)
 
+    def remove_asset_parameter_identifier(self, string):
+        """
+        removes the identifier of Asset Parameters
+            Args:
+                string (string): key or value of property
+            Return:
+                string without the identifier of Asset Parameters
+        """
+        pattern = '[0-9a-z]{64,}'
+        return re.sub(pattern, '', string)
+
     def remove_identifier(self, string):
         """
         removes the identifier
@@ -110,7 +121,8 @@ class TestSynth(unittest.TestCase):
         """
         pattern = '[0-9A-Z][0-9A-Z][0-9A-Z][0-9A-Z][0-9A-Z][0-9A-Z][0-9A-Z][0-9A-Z]$'
         if re.match(pattern, string[-8:]):
-            return re.sub(pattern, '', string)
+            string = re.sub(pattern, '', string)
+        string = self.remove_asset_parameter_identifier(string)
         return string
 
     def iterator(self, part_of_template):
@@ -158,4 +170,5 @@ class TestSynth(unittest.TestCase):
                 dictionary of Cloudformation properties
         """        
         template = app.synth().get_stack_by_name(stack_name).template
+        print(template)
         return self.remove_identifiers(template)
